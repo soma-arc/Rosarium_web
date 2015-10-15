@@ -14,6 +14,7 @@
            :*application-root*
            :*static-directory*
            :*template-directory*
+           :*ps-lisp-directory*
            :*contents-list*
            :appenv
            :developmentp
@@ -25,17 +26,20 @@
 (defparameter *application-root*   (asdf:system-source-directory :rosarium_web))
 (defparameter *static-directory*   (merge-pathnames #P"static/" *application-root*))
 (defparameter *template-directory* (merge-pathnames #P"templates/" *application-root*))
-(defparameter *contents-list* (let ((files (mapcar #'file-namestring
-                                                   (cl-fad:list-directory (merge-pathnames #P"contents/" *template-directory*))))
-                                    (contents-list nil))
-                                (loop for file in files do
-                                     (if (ppcre:scan "\\.html$" file)
-                                         (push `(:url ,(concatenate 'string "/" file)
-                                                      :title ,(ppcre:regex-replace-all "\\_"
-                                                                                       (car (ppcre:split "\\." file))
-                                                                                       " "))
-                                               contents-list)))
-                                (nreverse contents-list)))
+(defparameter *ps-lisp-directory* (merge-pathnames #P"src/ps/" *application-root*))
+
+(defparameter *contents-list*
+  (let ((files (mapcar #'file-namestring
+                       (cl-fad:list-directory (merge-pathnames #P"contents/" *template-directory*))))
+        (contents-list nil))
+    (loop for file in files do
+         (if (ppcre:scan "\\.html$" file)
+             (push `(:url ,(concatenate 'string "/" file)
+                          :title ,(ppcre:regex-replace-all "\\_"
+                                                           (car (ppcre:split "\\." file))
+                                                           " "))
+                   contents-list)))
+    (nreverse contents-list)))
 
 (defconfig :common
   `(:databases ((:maindb :sqlite3 :database-name ":memory:"))))

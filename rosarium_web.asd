@@ -13,6 +13,7 @@
                :envy
                :cl-ppcre
                :cl-fad
+               :parenscript
 
                ;; for @route annotation
                :cl-syntax-annot
@@ -29,6 +30,10 @@
                  (:file "web" :depends-on ("view"))
                  (:file "view" :depends-on ("config"))
                  (:file "db" :depends-on ("config"))
+                 (:file "psutil")
+                 (:file "ps/common/complex" :depends-on ("psutil"))
+                 (:file "js-builder" :depends-on ("config"
+                                                  "ps/common/complex"))
                  (:file "config"))))
   :description ""
   :in-order-to ((test-op (load-op rosarium_web-test))))
