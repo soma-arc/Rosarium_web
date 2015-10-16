@@ -31,7 +31,7 @@
                  (:file "view" :depends-on ("config"))
                  (:file "db" :depends-on ("config"))
                  (:file "psutil")
-                 (:file "ps/common/complex" :depends-on ("psutil"))
+                 (:file "ps/common/complex" :depends-on ("psutil" "config"))
                  (:file "js-builder" :depends-on ("config"
                                                   "ps/common/complex"))
                  (:file "config"))))

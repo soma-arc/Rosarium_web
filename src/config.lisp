@@ -13,8 +13,10 @@
   (:export :config
            :*application-root*
            :*static-directory*
+           :*contents-directory*
            :*template-directory*
            :*ps-lisp-directory*
+           :*built-js-dic*
            :*contents-list*
            :appenv
            :developmentp
@@ -25,8 +27,11 @@
 
 (defparameter *application-root*   (asdf:system-source-directory :rosarium_web))
 (defparameter *static-directory*   (merge-pathnames #P"static/" *application-root*))
+(defparameter *contents-directory*   (merge-pathnames #P"static/contents/" *application-root*))
 (defparameter *template-directory* (merge-pathnames #P"templates/" *application-root*))
 (defparameter *ps-lisp-directory* (merge-pathnames #P"src/ps/" *application-root*))
+
+(defparameter *built-js-dic* (make-hash-table :test #'equal))
 
 (defparameter *contents-list*
   (let ((files (mapcar #'file-namestring
