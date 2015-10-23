@@ -1,8 +1,33 @@
 language: common-lisp
-sudo: required
+sudo: false
 
 install:
   - curl -L https://raw.githubusercontent.com/snmsts/roswell/release/scripts/install-for-ci.sh | sh
 
+cache:
+    directories:
+        - $HOME/.roswell
+
 script:
-  - ros -s prove -e '(or (prove:run :rosarium_web-test) (uiop:quit -1))'
+  - ros -s prove -e '(or (prove:run :travis-test-test) (uiop:quit -1))'
+
+env:
+    global:
+        - secure: "wJujwncxDKGk+Pn9SFhqT859gCOzPRzy345LNyGxyVwtqjlghNwJ7eo7w4JaYIXFzYzuc/bhQL2nzG/qz16+UwUIC/Gudf8uWgt4QwhRWUWRPgED3Qqwvy5wvLDjv/m51jw1vE9BnR4w+ueg1JT2V+OLDYA88axwLxu+nO9jQrB5t0N+rGgM1WJl6dx/w2HVURncle2J29PMSLiTsYesh2pn0JvW4AQ6sLgDq7XL7NslGLRP6MAuSip0MKY5lV8ZhBkQdXguMnR6cAFUpFvKz4uehSkuQhqS9XKW13SGxepIwf01XHuLpZkykzX4AZ0qYx2edtGCmx0bMX8bd60+j1tapk/8sp1m1e2wUVBUakjGnsWfrIZNNFeRBsaoHtCpIoN5i3RyRuhtbgjz2BWVyDGyB2WhCFtbXnOJLXgu6YrnocuaZ79EVkXMTKbReDjzhPujWaDZQ/oJnSt1yugq92mYUVYA0nK6WQx1V9sWsMzMBKPgxvSYGeb2cVKxmBF6X49czb9uVesOfDmzj65Fc2QBc5TmrvRcWCdH35SBUbtSLq7vrU+vgT3rS9WgWuJ9k27IUTLYY2ac3fZz1MBfFU9hKQiiuFM/M/q+NC+csXxFK1S64oB4LwUeMmL5fg0i350yNeRkzJhL10RrxVGjw6w7axgTrIMjTpeFpa4rqdc="
+        - secure: "jc2WujC+KvZuQyQHvZ8QWLVsV6HKYV+ui1aFfEs9V1IuE1JUAsV69RSrftp0iwStIVDlwVZzQUhBId32ldg6TBwy2cHS6vRdEAr09S7SoRMLi3YbHFprI21xnmVg4zfUzp9nnH8PS5g1qVXSQCAxh0Rb3FD63c6n2PeAS22YwabhVfiP/evJ3Uv5DYnD8sSG/c0zjCzvfd6GTnHfrmL9dY+Q9Dr+Kc5LA72T9w2/wc2WtHgRx2EiKaQVXeovtKHZfl0cEYY0eKUuAZl6EMlHBAYCCG9CoDxI4Iv4nZAtvDV+fndq0i8Ytr80tQQtPSzOETuzb3hx11sWFWLTsDyH8UCTsmFTYfH6JTNW3Kfsq2YiZzdp49s4tiPj/GN/J2Lb/RP8iaF3U6GXVf+9RVHS/j9HgAbzsVqe5MxyOwe7CsAa7A6j5OLmJ6+alr+L6IWm/TnmC7xh+NXNeLhlHjFI1JdmGN8YXhjaO2827N3o8NBzZDwLOdkVWegQ+h8rNoPuQKeFTiUgnxRwm9JCmvaHSd5Zp8WLnB7Lw3s4TvYXBvN70IFkXLbCJ2W9760Lp/1vlJIuJcpUge6ro6apjLhQKLx4aU5Fk78B4iDFXGyg4muK2W2LsvjTKIgPr03fc/njHswlUZBVKcHUdjInKrBcY1vohqweF2Km8LOZ9BsNFmA="
+        - secure: "xhzWcIgklp7iZmggBrwRxczHOjGTvEu5YB1qi769wVS91RlQ5fV5fhyDw7enDhoZ228vcwZexpFXGhJLvbZ/hke+pUatpmB5R0X0P1TVnzbLy4iQA6X1nWFSpUrlMDSKY8MAwzPD9KYkqZGV58vMD3k4KFTtagf/w2m73sOIBji5opaaBSPago1hyDtBScNZ69kbiKqlA4I7odiW3XLhzYsixIxIkSWZ11aYT4ibH3kMcv/T8nMgrS8sNJ6Ezv4CxvI7zh/pLTC+3cy27GaFsaJupf+S9XZA/gK86OJ56TyT5bVA5zG3372y5V7meREVZj6ZqZ0gBpbhGjbMxx1cM9ADjck69RrhVi29b9DrA2qmHqnpHDAPjRmrWmPMoWnbh6VQb1dAsoVj05868Cg+5LMPCd1z7zO3V9xrUY2mJAKcaTQg0QXITY+DDJcaWS/CI2Y571+u8NnRxEraFR80uHr32jC2u+T0SKZEHv23RnCn8TzEBXaUeym7Tf/AJ9S8U8JPU3dhc3xnXSSs95JY55GRwww0O8Hut3e3OhYSm6PkefSbhSsEPuXT/EME7G7JUk8VB3z6111OIGflL/Jf9YIN6EXpKjQPLG81Z+ss3/CKjNvW4QE/4vz63tIE9D+z8MIQiusWGl5EPauzTH8+SyNJlunsPI/fX7ujaqVmgnE="
+        - secure: "Lk1XzGjedn0SEUTu9PmYNOx5IBBaOH7MIn9DtXErYCuGFIbWcUafkkYt04kC91JWrAV1FEUeq7bAF7RrcYKIerJ89qcjaT5pNEpHTjS1CEvFUa54jx5l/aq1fNVYYxYWttcIoDkQ2zx+C7UMms7Y3QEVV8Ay744id8eASCXCaPlRu00hcvWcUX1UcZhIOUza13bPgO9+ScY7smIYPpdsB8e16xAjh3V4WpjiuLdhrjqjt2+hn4KHtLfyVgUMc+By1vgBFmKCySwhDJJir9BK9bU/qeawFaIaIfiBNqZlvxJqHHx/fhwF888GuLL0JDbmn8R7ST4RBSaGVnLj5pAOLrimCJxbFc8XA30nyFMuT8ccmRjc0Wc9IvxTRt+A1GC4zIymsAlT+MUtWdxvCa4GHwcFFDk00qwJ0wn8RkpuNc3tV+pEsGXTCjvGuhF5XTB6dO8xtZc0w0FrdTemmDgZXjgiUmXRReFlSwdLBmORAFsOXdNuqj9I1LCuu9v8uhyAIa8IXpflSRJvyAITHpX+mhU+s3bpWAZbyWL5J9n3a0hNDiDJS4eUIfcpTNsKZzPrwVyOwA7JTZvt36H95DR0GwNnm+Pg0+VFT+b+nPgChQAqKS/yrttTHlg8C8kdb7nRRg3/q6KbwF9UCD8hSpjBYo3z9G/Vq586B+cB494I+eA="
+        - secure: "fBoGyq3X3G3+YOYfMGVdduQRCmd9VmYEBIa0DMxYK1v2Unmng1WxaYy7LM28/cOXZWKvUEyF0fwcQloZlGov56GJWW0vTiIUfJRPOSBoSQxa++7VyPfnksoAFs0aJB6xzGZFsVat9HTRkpi6SCNQU3mgLya8mq0XQuCO1J5GiFo+/LEBo8hSYYYMPsXgtiuEhuMWDA1sO+6SeHIVz138gpp0zUhJxbEowB4E5D/u5kSyIucoGTdbiHog7u5ztU1oRf2AZvuyk7fkZYRcbbeUjTElq0A5ZEGISiYYUpOZzn0Gzkasi4Pe/PZPP3Z+cFWIP5r/YVJWuRGbeWxqOwMDeFgM1iznUHf0AZWm8/yiNkvSUx9AAs9wPc09Knlic0dVRHgOcVrSfHSIpdub5kcmz0ieNAOIt26xJaSO+mLI3+C5Jp7FEtDkZhvKsyuM8HY4/U9gbzq6vjTYAfNRzmhOAoq+J9CY5QtxPf/GRmEM2Q9rGUpXD4T6QoxN2hTQzYCIY/7N9Dfxfjpb+sUHZV1pC2rwGa3XO11+rjTWyjxYW6QefWN0vP3466aiM2dbeMZqWGtKk9VPstqiYHN/t6FlWv8EnZGss2cOMIDFYjTeUg+a4iTdLNXkig2/1/ROU2RJA2Lv+vKqkaN/94Au/0Onq2Jhp+TeF/B0WM1LU8R+nG0="
+        - PATH=~/.roswell/bin:$PATH
+        - ROSWELL_INSTALL_DIR=$HOME/.roswell
+
+addons:
+    apt:
+        packages:
+            - sshpass
+
+after_success:
+    - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+        export SSHPASS=$DEPLOY_PASS;
+        sshpass -e ssh -t -t -p $DEPLOY_PORT -o "StrictHostKeyChecking"=no $DEPLOY_USER@$DEPLOY_HOST "echo ${DEPLOY_PASS} | sudo -S ${DEPLOY_PATH}/deploy.sh" 1>/dev/null 2>/dev/null;
+      fi
