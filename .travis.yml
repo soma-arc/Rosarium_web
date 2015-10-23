@@ -9,7 +9,7 @@ cache:
         - $HOME/.roswell
 
 script:
-  - ros -s prove -e '(or (prove:run :travis-test-test) (uiop:quit -1))'
+  - ros -s prove -e '(or (prove:run :rosarium_web-test) (uiop:quit -1))'
 
 env:
     global:
