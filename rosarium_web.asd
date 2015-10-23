@@ -32,8 +32,11 @@
                  (:file "db" :depends-on ("config"))
                  (:file "psutil")
                  (:file "ps/common/complex" :depends-on ("psutil" "config"))
+                 (:file "ps/common/sl2c" :depends-on ("psutil" "config" "ps/common/complex"))
+                 (:file "ps/common/circle" :depends-on ("psutil" "config" "ps/common/complex"))
                  (:file "js-builder" :depends-on ("config"
-                                                  "ps/common/complex"))
+                                                  "ps/common/complex"
+                                                  "ps/common/circle"))
                  (:file "config"))))
   :description ""
   :in-order-to ((test-op (load-op rosarium_web-test))))
