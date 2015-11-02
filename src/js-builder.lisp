@@ -11,8 +11,10 @@
 
 (defun write-js-files (dic)
   (maphash #'(lambda (path js)
+               (setf path (merge-pathnames path *contents-directory*))
+               (ensure-directories-exist path)
                (with-open-file (out
-                                (merge-pathnames path *contents-directory*)
+                                path
                                 :direction :output
                                 :if-exists :supersede
                                 :if-does-not-exist :create)
