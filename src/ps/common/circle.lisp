@@ -26,9 +26,9 @@
                       (setq this.p3 p3))
 
           (defpsmethod circle fill (ctx)
-                       (ctx.begin-path)
-                       (ctx.arc this.center.re this.center.i this.r
+                       ((@ ctx begin-path))
+                       ((@ ctx arc) this.center.re this.center.i this.r
                                 0 (* 2 ps:pi) false)
-                       (ctx.fill)))))
+                       ((@ ctx fill))))))
 
 
