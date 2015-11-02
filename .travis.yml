@@ -12,6 +12,9 @@ script:
   - ros -s prove -e '(or (prove:run :rosarium_web-test) (uiop:quit -1))'
 
 env:
+    matrix:
+        - LISP=sbcl-bin
+        - LISP=ccl-bin
     global:
         - secure: "wJujwncxDKGk+Pn9SFhqT859gCOzPRzy345LNyGxyVwtqjlghNwJ7eo7w4JaYIXFzYzuc/bhQL2nzG/qz16+UwUIC/Gudf8uWgt4QwhRWUWRPgED3Qqwvy5wvLDjv/m51jw1vE9BnR4w+ueg1JT2V+OLDYA88axwLxu+nO9jQrB5t0N+rGgM1WJl6dx/w2HVURncle2J29PMSLiTsYesh2pn0JvW4AQ6sLgDq7XL7NslGLRP6MAuSip0MKY5lV8ZhBkQdXguMnR6cAFUpFvKz4uehSkuQhqS9XKW13SGxepIwf01XHuLpZkykzX4AZ0qYx2edtGCmx0bMX8bd60+j1tapk/8sp1m1e2wUVBUakjGnsWfrIZNNFeRBsaoHtCpIoN5i3RyRuhtbgjz2BWVyDGyB2WhCFtbXnOJLXgu6YrnocuaZ79EVkXMTKbReDjzhPujWaDZQ/oJnSt1yugq92mYUVYA0nK6WQx1V9sWsMzMBKPgxvSYGeb2cVKxmBF6X49czb9uVesOfDmzj65Fc2QBc5TmrvRcWCdH35SBUbtSLq7vrU+vgT3rS9WgWuJ9k27IUTLYY2ac3fZz1MBfFU9hKQiiuFM/M/q+NC+csXxFK1S64oB4LwUeMmL5fg0i350yNeRkzJhL10RrxVGjw6w7axgTrIMjTpeFpa4rqdc="
         - secure: "jc2WujC+KvZuQyQHvZ8QWLVsV6HKYV+ui1aFfEs9V1IuE1JUAsV69RSrftp0iwStIVDlwVZzQUhBId32ldg6TBwy2cHS6vRdEAr09S7SoRMLi3YbHFprI21xnmVg4zfUzp9nnH8PS5g1qVXSQCAxh0Rb3FD63c6n2PeAS22YwabhVfiP/evJ3Uv5DYnD8sSG/c0zjCzvfd6GTnHfrmL9dY+Q9Dr+Kc5LA72T9w2/wc2WtHgRx2EiKaQVXeovtKHZfl0cEYY0eKUuAZl6EMlHBAYCCG9CoDxI4Iv4nZAtvDV+fndq0i8Ytr80tQQtPSzOETuzb3hx11sWFWLTsDyH8UCTsmFTYfH6JTNW3Kfsq2YiZzdp49s4tiPj/GN/J2Lb/RP8iaF3U6GXVf+9RVHS/j9HgAbzsVqe5MxyOwe7CsAa7A6j5OLmJ6+alr+L6IWm/TnmC7xh+NXNeLhlHjFI1JdmGN8YXhjaO2827N3o8NBzZDwLOdkVWegQ+h8rNoPuQKeFTiUgnxRwm9JCmvaHSd5Zp8WLnB7Lw3s4TvYXBvN70IFkXLbCJ2W9760Lp/1vlJIuJcpUge6ro6apjLhQKLx4aU5Fk78B4iDFXGyg4muK2W2LsvjTKIgPr03fc/njHswlUZBVKcHUdjInKrBcY1vohqweF2Km8LOZ9BsNFmA="
