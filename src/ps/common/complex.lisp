@@ -83,6 +83,13 @@
                       ((< c.re 0)
                        (new (complex 0 (sqrt (abs c.re)))))
                       (t (new (complex (sqrt c.re))))))))
+          (defps-static complex norm
+            (lambda (c)
+              (sqrt (+ (* c.re c.re)
+                       (* c.im c.im)))))
+          (defps-static complex conjugate
+            (lambda (c)
+              (new (complex c.re (- c.im)))))
           (defps-static complex infinityp
             (lambda (c)
               (or (= c.re (@ -number +positive_infinity+))
